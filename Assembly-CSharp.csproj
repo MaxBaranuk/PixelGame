@@ -2,6 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>7.2</LangVersion>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,7 +15,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
@@ -54,16 +55,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Builders\CatalogueBuilder.cs" />
+    <Compile Include="Assets\Scripts\Builders\SceneBuilder.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\Controllers\InputHandler.cs" />
     <Compile Include="Assets\Scripts\JSONConverters\QuaternionJsonConverter.cs" />
     <Compile Include="Assets\Scripts\JSONConverters\SceneObjectConverter.cs" />
+    <Compile Include="Assets\Scripts\Models\Building.cs" />
+    <Compile Include="Assets\Scripts\Models\CatalogueProduct.cs" />
     <Compile Include="Assets\Scripts\Models\GameData.cs" />
     <Compile Include="Assets\Scripts\Models\IShotable.cs" />
     <Compile Include="Assets\Scripts\Models\SceneObject.cs" />
     <Compile Include="Assets\Scripts\Models\SceneRoot.cs" />
-    <Compile Include="Assets\Scripts\Scene\SceneBuilder.cs" />
-    <Compile Include="Assets\Scripts\UI\BuildingsPanel.cs" />
-    <Compile Include="Assets\Scripts\UI\InputHandler.cs" />
+    <Compile Include="Assets\Scripts\Scene\SceneManager.cs" />
+    <Compile Include="Assets\Scripts\UI\CataloguePanel.cs" />
+    <Compile Include="Assets\Scripts\UI\CatalogueItem.cs" />
     <Compile Include="Assets\Scripts\UI\MainPanelControl.cs" />
+    <Compile Include="Assets\Scripts\UI\UiController.cs" />
     <Compile Include="Assets\Sprites\Simple UI\Samples\IconPreview.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
@@ -302,6 +310,9 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0b2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:/Projects/Pixel Game/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/Projects/Pixel Game/Library/PackageCache/com.unity.analytics@3.0.9/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -316,9 +327,6 @@
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>D:/Projects/Pixel Game/Library/PackageCache/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>D:/Projects/Pixel Game/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0b2/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

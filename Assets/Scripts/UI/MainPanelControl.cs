@@ -15,7 +15,7 @@ namespace UI
 
         private void OpenBuildingsPanel()
         {
-            _buildingsPanel.SetActive(true);
+            UiController.Instance.Catalogue.gameObject.SetActive(true);
         }
     }
 }

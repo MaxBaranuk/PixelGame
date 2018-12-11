@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
-using Models;
+using Controllers.Builders;
+using Model;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,15 +13,26 @@ namespace UI
         [SerializeField] private TMP_Text _coast;
         [SerializeField] private TMP_Text _addCoast;
         [SerializeField] private TMP_Text _name;
-        public CatalogueProduct Product;
+        public BuildingData ItemData;
 
-        public void SetProductData(CatalogueProduct product)
+        private void Start()
         {
-            Product = product;
-            _icon.sprite = product.Icon;
-            _name.text = product.Name;
-            _coast.text = product.Coast.ToString(CultureInfo.CurrentCulture);
-            _addCoast.text = product.AddCoast.ToString(CultureInfo.CurrentCulture);
+            GetComponent<Button>().onClick.AddListener(() => 
+            {
+                SceneObjectBuilder.CreateBuildingFromCatalogue(ItemData);
+                UiController.Instance.Catalogue.gameObject.SetActive(false);
+            });
         }
+
+        public void SetProductData(BuildingData itemData)
+        {
+            ItemData = itemData;
+            _icon.sprite = itemData.Icon;
+            _name.text = itemData.Name;
+            _coast.text = itemData.GoldCoast.ToString(CultureInfo.CurrentCulture);
+            _addCoast.text = itemData.BricksCoast.ToString(CultureInfo.CurrentCulture);
+        }
+        
+        
     }
 }

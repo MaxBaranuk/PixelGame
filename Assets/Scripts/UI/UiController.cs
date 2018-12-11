@@ -7,6 +7,7 @@ namespace UI
         public static UiController Instance;
         public Canvas MainCanvas => _canvas;
         public CataloguePanel Catalogue;
+        public MainPanelControl MainPanel;
 
         private static Canvas _canvas;
 

@@ -1,11 +1,12 @@
-﻿using UI;
+﻿using SceneObjects;
+using UI;
 using UniRx;
 using UnityEngine;
 
 namespace Controllers
 {
     public class CameraMovement : MonoBehaviour
-    {
+    {      
         private void Start()
         {
             InputHandler.MouseScroll.Subscribe(value =>
@@ -16,12 +17,16 @@ namespace Controllers
                 transform.position = pos;
             });
             
-            InputHandler.PointerMove.Subscribe(vector2 =>
+            InputHandler.PointerMove.SubscribeWithState(this, (vectors, go) =>
             {
+                if (!go.isActiveAndEnabled) return;
+                
                 var forvardDir = Vector3.ProjectOnPlane(transform.up, Vector3.up);
-                transform.Translate(0.01f * forvardDir * vector2.y * transform.position.y, Space.World);
-                transform.Translate(0.01f * transform.right * vector2.x * transform.position.y, Space.World);
+                transform.Translate(-0.01f * forvardDir * vectors.Item3.y * transform.position.y, Space.World);
+                transform.Translate(-0.01f * transform.right * vectors.Item3.x * transform.position.y, Space.World);
             });
+
+            Building.IsMoving.Subscribe(b => enabled = !b);
         }
     }
 }

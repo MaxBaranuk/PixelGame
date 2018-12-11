@@ -1,5 +1,5 @@
 ﻿using System;
-using Models;
+using Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -16,7 +16,7 @@ namespace JSONConverters
 
         public override bool CanConvert(Type objectType)
         {
-            return typeof(SceneObject).IsAssignableFrom(objectType);
+            return typeof(SceneObjectData).IsAssignableFrom(objectType);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -30,7 +30,7 @@ namespace JSONConverters
 //                .Else(_ => { throw new JsonReaderException($"Can't parse SceneObjectRecord, unknown type: \"{typeString}\"."); })
 //                .Result();
 
-            var record = new SceneObject();
+            var record = new SceneObjectData();
             using (var jsonReader = jsonObject.CreateReader())
             {
                 serializer.Populate(jsonReader, record);
